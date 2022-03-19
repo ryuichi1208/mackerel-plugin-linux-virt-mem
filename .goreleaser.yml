@@ -1,5 +1,5 @@
 builds:
-  - binary: mackerel-plugin-linux-process-status
+  - binary: mackerel-plugin-linux-virt-mem
     goos:
       - linux
     goarch:
@@ -10,5 +10,5 @@ archives:
     name_template: "{{ .ProjectName }}_{{ .Os }}_{{ .Arch }}"
 release:
   github:
-    owner: kazeburo
-    name: mackerel-plugin-linux-process-status
+    owner: ryuichi1208
+    name: mackerel-plugin-linux-virt-mem
