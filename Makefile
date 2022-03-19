@@ -16,7 +16,7 @@ devel-deps: deps
 
 .PHONY: lint
 lint:
-	golint .
+	#golint .
 	go vet ./...
 
 .PHONY: build
