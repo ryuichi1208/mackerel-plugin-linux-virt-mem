@@ -1,5 +1,5 @@
 BINDIR := bin
-NAME := linux-virt-mem
+NAME := mackerel-plugin-linux-virt-mem
 REVISION := $(shell git rev-parse --short HEAD)
 LDFLAGS := -X 'main.revision=$(REVISION)'
 
