@@ -10,11 +10,6 @@ import (
 	mp "github.com/mackerelio/go-mackerel-plugin"
 )
 
-var (
-	VERSION  = "0.0.1"
-	REVISION = ""
-)
-
 type VirtmemPlugin struct {
 	Prefix string
 }
@@ -36,7 +31,6 @@ func (v VirtmemPlugin) GraphDefinition() map[string]mp.Graphs {
 			},
 		},
 	}
-
 }
 
 func (v VirtmemPlugin) MetricKeyPrefix() string {
@@ -76,14 +70,14 @@ func (mm *memMetrics) getAndParseVirtMemMetrics() error {
 
 func (v VirtmemPlugin) FetchMetrics() (map[string]float64, error) {
 	mm := &memMetrics{}
-	err := mm.getAndParseVirtMemMetrics()
-
 	m := make(map[string]float64)
+	err := mm.getAndParseVirtMemMetrics()
+	if err != nil {
+		return m, err
+	}
 	m["CommitLimit"] = mm.commitLimit
 	m["CommittedAS"] = mm.commitAs
-
-	return m, err
-
+	return m, nil
 }
 
 func Do() {
